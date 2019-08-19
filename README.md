@@ -8,6 +8,11 @@ Framework for making Express-like net apps using Swift NIO.
 
 NetAppKit is released under the MIT license. See `LICENSE` file for more detailed information.
 
+## Reference Documentation
+
+There is generated [reference documentation](https://apparata.github.io/CLIKit/CLIKit/)
+available.
+
 ## Example
 
 ```swift
