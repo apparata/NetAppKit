@@ -1,0 +1,355 @@
+{
+  "warnings": [
+    {
+      "file": "/Users/martin/Projekt/git/frameworks/NetAppKit/Sources/NetAppKit/App+Convenience.swift",
+      "line": 13,
+      "symbol": "App.listen(on:host:backlog:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/martin/Projekt/git/frameworks/NetAppKit/Sources/NetAppKit/App+Convenience.swift",
+      "line": 21,
+      "symbol": "App.handle(_:path:action:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/martin/Projekt/git/frameworks/NetAppKit/Sources/NetAppKit/App.swift",
+      "line": null,
+      "symbol": "App",
+      "symbol_kind": "source.lang.swift.decl.extension",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/martin/Projekt/git/frameworks/NetAppKit/Sources/NetAppKit/App.swift",
+      "line": 9,
+      "symbol": "App",
+      "symbol_kind": "source.lang.swift.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/martin/Projekt/git/frameworks/NetAppKit/Sources/NetAppKit/App.swift",
+      "line": 11,
+      "symbol": "App.server",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/martin/Projekt/git/frameworks/NetAppKit/Sources/NetAppKit/App.swift",
+      "line": 13,
+      "symbol": "App.router",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/martin/Projekt/git/frameworks/NetAppKit/Sources/NetAppKit/App.swift",
+      "line": 15,
+      "symbol": "App.fileIO",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/martin/Projekt/git/frameworks/NetAppKit/Sources/NetAppKit/App.swift",
+      "line": 21,
+      "symbol": "App.init()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/martin/Projekt/git/frameworks/NetAppKit/Sources/NetAppKit/AppRouter.swift",
+      "line": 13,
+      "symbol": "RouteAction",
+      "symbol_kind": "source.lang.swift.decl.typealias",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/martin/Projekt/git/frameworks/NetAppKit/Sources/NetAppKit/AppRouter.swift",
+      "line": 17,
+      "symbol": "AppRouter",
+      "symbol_kind": "source.lang.swift.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/martin/Projekt/git/frameworks/NetAppKit/Sources/NetAppKit/AppServer.swift",
+      "line": 9,
+      "symbol": "AppServerError",
+      "symbol_kind": "source.lang.swift.decl.enum",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/martin/Projekt/git/frameworks/NetAppKit/Sources/NetAppKit/AppServer.swift",
+      "line": 10,
+      "symbol": "AppServerError.addressAlreadyInUse",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/martin/Projekt/git/frameworks/NetAppKit/Sources/NetAppKit/AppServer.swift",
+      "line": 11,
+      "symbol": "AppServerError.underlying(_:)",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/martin/Projekt/git/frameworks/NetAppKit/Sources/NetAppKit/AppServer.swift",
+      "line": 14,
+      "symbol": "AppServer",
+      "symbol_kind": "source.lang.swift.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/martin/Projekt/git/frameworks/NetAppKit/Sources/NetAppKit/AppServer.swift",
+      "line": 25,
+      "symbol": "AppServer.listen(on:host:backlog:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/martin/Projekt/git/frameworks/NetAppKit/Sources/NetAppKit/File IO/FileIO.swift",
+      "line": 10,
+      "symbol": "FileIO",
+      "symbol_kind": "source.lang.swift.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/martin/Projekt/git/frameworks/NetAppKit/Sources/NetAppKit/File IO/FileIO.swift",
+      "line": 12,
+      "symbol": "FileIO.ReadResult",
+      "symbol_kind": "source.lang.swift.decl.typealias",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/martin/Projekt/git/frameworks/NetAppKit/Sources/NetAppKit/File IO/FileIO.swift",
+      "line": 14,
+      "symbol": "FileIO.readFile(_:completion:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/martin/Projekt/git/frameworks/NetAppKit/Sources/NetAppKit/Inbound/HTTPRequest.swift",
+      "line": 8,
+      "symbol": "HTTPRequest",
+      "symbol_kind": "source.lang.swift.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/martin/Projekt/git/frameworks/NetAppKit/Sources/NetAppKit/Inbound/HTTPRequest.swift",
+      "line": 10,
+      "symbol": "HTTPRequest.method",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/martin/Projekt/git/frameworks/NetAppKit/Sources/NetAppKit/Inbound/HTTPRequest.swift",
+      "line": 11,
+      "symbol": "HTTPRequest.uri",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/martin/Projekt/git/frameworks/NetAppKit/Sources/NetAppKit/Inbound/HTTPRequest.swift",
+      "line": 12,
+      "symbol": "HTTPRequest.headers",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/martin/Projekt/git/frameworks/NetAppKit/Sources/NetAppKit/Inbound/HTTPRequest.swift",
+      "line": 13,
+      "symbol": "HTTPRequest.rawBody",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/martin/Projekt/git/frameworks/NetAppKit/Sources/NetAppKit/Inbound/HTTPRequest.swift",
+      "line": 14,
+      "symbol": "HTTPRequest.parameters",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/martin/Projekt/git/frameworks/NetAppKit/Sources/NetAppKit/Inbound/HTTPRequest.swift",
+      "line": 44,
+      "symbol": "HTTPRequest.parameter(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/martin/Projekt/git/frameworks/NetAppKit/Sources/NetAppKit/NetAppKitError.swift",
+      "line": 7,
+      "symbol": "NetAppKitError",
+      "symbol_kind": "source.lang.swift.decl.enum",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/martin/Projekt/git/frameworks/NetAppKit/Sources/NetAppKit/NetAppKitError.swift",
+      "line": 8,
+      "symbol": "NetAppKitError.failedToReadFile",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/martin/Projekt/git/frameworks/NetAppKit/Sources/NetAppKit/Outbound/HTTPResponse.swift",
+      "line": 9,
+      "symbol": "HTTPResponse",
+      "symbol_kind": "source.lang.swift.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/martin/Projekt/git/frameworks/NetAppKit/Sources/NetAppKit/Outbound/HTTPResponse.swift",
+      "line": 25,
+      "symbol": "HTTPResponse.send(_:status:headers:contentType:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/martin/Projekt/git/frameworks/NetAppKit/Sources/NetAppKit/Utils/Log.swift",
+      "line": 91,
+      "symbol": "ModuleWideLogService",
+      "symbol_kind": "source.lang.swift.decl.protocol",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/martin/Projekt/git/frameworks/NetAppKit/Sources/NetAppKit/Utils/Log.swift",
+      "line": 108,
+      "symbol": "ModuleWideLog",
+      "symbol_kind": "source.lang.swift.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/martin/Projekt/git/frameworks/NetAppKit/Sources/NetAppKit/Utils/Log.swift",
+      "line": 112,
+      "symbol": "ModuleWideLog.service",
+      "symbol_kind": "source.lang.swift.decl.var.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/martin/Projekt/git/frameworks/NetAppKit/Sources/NetAppKit/Utils/MIMEContentType.swift",
+      "line": 9,
+      "symbol": "MIMEContentType.text",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/martin/Projekt/git/frameworks/NetAppKit/Sources/NetAppKit/Utils/MIMEContentType.swift",
+      "line": 10,
+      "symbol": "MIMEContentType.html",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/martin/Projekt/git/frameworks/NetAppKit/Sources/NetAppKit/Utils/MIMEContentType.swift",
+      "line": 11,
+      "symbol": "MIMEContentType.json",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/martin/Projekt/git/frameworks/NetAppKit/Sources/NetAppKit/Utils/MIMEContentType.swift",
+      "line": 12,
+      "symbol": "MIMEContentType.xml",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/martin/Projekt/git/frameworks/NetAppKit/Sources/NetAppKit/Utils/MIMEContentType.swift",
+      "line": 13,
+      "symbol": "MIMEContentType.form",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/martin/Projekt/git/frameworks/NetAppKit/Sources/NetAppKit/Utils/MIMEContentType.swift",
+      "line": 14,
+      "symbol": "MIMEContentType.multipart(boundary:)",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/martin/Projekt/git/frameworks/NetAppKit/Sources/NetAppKit/Utils/MIMEContentType.swift",
+      "line": 15,
+      "symbol": "MIMEContentType.binary",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/martin/Projekt/git/frameworks/NetAppKit/Sources/NetAppKit/Utils/MIMEContentType.swift",
+      "line": 16,
+      "symbol": "MIMEContentType.other(_:)",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/martin/Projekt/git/frameworks/NetAppKit/Sources/NetAppKit/Utils/MIMEContentType.swift",
+      "line": 18,
+      "symbol": "MIMEContentType.isText",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/martin/Projekt/git/frameworks/NetAppKit/Sources/NetAppKit/Utils/MIMEContentType.swift",
+      "line": 26,
+      "symbol": "MIMEContentType.isHTML",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/martin/Projekt/git/frameworks/NetAppKit/Sources/NetAppKit/Utils/MIMEContentType.swift",
+      "line": 34,
+      "symbol": "MIMEContentType.isJSON",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/martin/Projekt/git/frameworks/NetAppKit/Sources/NetAppKit/Utils/MIMEContentType.swift",
+      "line": 42,
+      "symbol": "MIMEContentType.xml",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/martin/Projekt/git/frameworks/NetAppKit/Sources/NetAppKit/Utils/MIMEContentType.swift",
+      "line": 50,
+      "symbol": "MIMEContentType.isForm",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/martin/Projekt/git/frameworks/NetAppKit/Sources/NetAppKit/Utils/MIMEContentType.swift",
+      "line": 58,
+      "symbol": "MIMEContentType.isMultipart",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/martin/Projekt/git/frameworks/NetAppKit/Sources/NetAppKit/Utils/MIMEContentType.swift",
+      "line": 66,
+      "symbol": "MIMEContentType.isBinary",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/martin/Projekt/git/frameworks/NetAppKit/Sources/NetAppKit/Utils/MIMEContentType.swift",
+      "line": 74,
+      "symbol": "MIMEContentType.isOther",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/martin/Projekt/git/frameworks/NetAppKit/Sources/NetAppKit/Utils/MIMEContentType.swift",
+      "line": 82,
+      "symbol": "MIMEContentType.init(mimeType:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/martin/Projekt/git/frameworks/NetAppKit/Sources/NetAppKit/Utils/MIMEContentType.swift",
+      "line": 112,
+      "symbol": "MIMEContentType.asString",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    }
+  ],
+  "source_directory": "/Users/martin/Projekt/git/frameworks/NetAppKit"
+}
