@@ -11,16 +11,13 @@ public final class App {
     public let server: AppServer
     
     public let router: AppRouter
-    
-    public let fileIO: FileIO
-    
+        
     private let loopGroup: MultiThreadedEventLoopGroup
 
     // MARK: - Life cycle
     
     public init() {
         loopGroup = MultiThreadedEventLoopGroup(numberOfThreads: System.coreCount)
-        fileIO = FileIO()
         router = AppRouter()
         server = AppServer(loopGroup: loopGroup, router: router)
     }
