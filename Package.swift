@@ -25,6 +25,16 @@ let package = Package(
                 .define("RELEASE", .when(configuration: .release)),
                 .define("SWIFT_PACKAGE")
             ]),
+        .target(
+            name: "Example",
+            dependencies: [
+                "NetAppKit"
+            ],
+            swiftSettings: [
+                .define("DEBUG", .when(configuration: .debug)),
+                .define("RELEASE", .when(configuration: .release)),
+                .define("SWIFT_PACKAGE")
+            ]),
         .testTarget(
             name: "NetAppKitTests",
             dependencies: ["NetAppKit"]),
