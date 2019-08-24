@@ -183,7 +183,7 @@ internal class PrintLogService: ModuleWideLogService {
     ///
     /// - parameter includeCodeLocation: Includes file, function, and line
     ///                                  information in the log entries.
-    init(subsystem: String, includeCodeLocation: Bool = false) {
+    init(includeCodeLocation: Bool = false) {
         self.includeCodeLocation = includeCodeLocation
     }
     
