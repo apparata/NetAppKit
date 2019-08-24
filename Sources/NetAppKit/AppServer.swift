@@ -52,7 +52,7 @@ public class AppServer {
     
     private func makeServerBootstrap(backlog: Int) -> ServerBootstrap {
         let serverBootstrap = ServerBootstrap(group: loopGroup)
-            .serverChannelOption(ChannelOptions.backlog, value: SocketOptionValue(backlog))
+            .serverChannelOption(ChannelOptions.backlog, value: Int32(backlog))
             .serverSocketOption(SocketOptionLevel(SOL_SOCKET), SO_REUSEADDR)
             .childChannelInitializer { [weak self] channel in
                 return channel.pipeline.configureHTTPServerPipeline().flatMap { _ in
