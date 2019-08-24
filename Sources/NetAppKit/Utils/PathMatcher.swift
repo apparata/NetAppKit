@@ -22,9 +22,24 @@ internal struct PathPattern {
             }
         }
     }
+    
+    private init(parts: [Part]) {
+        self.parts = parts
+    }
+    
+    fileprivate func appendingPattern(_ pattern: PathPattern) -> PathPattern {
+        guard parts.count > 0 else {
+            return pattern
+        }
+        var patternParts = pattern.parts
+        if case let .string(part) = patternParts.first, part == "/" {
+            patternParts.removeFirst()
+        }
+        return PathPattern(parts: parts + patternParts)
+    }
 }
 
-internal class PathMatch {
+internal struct PathMatch {
     
     internal let parameters: [String: String]
     
@@ -41,7 +56,8 @@ internal class PathMatcher {
     
     internal let path: String
     internal let components: [String]
-    
+    internal let prefixPattern: PathPattern
+
     internal enum Error: Swift.Error {
         case invalidPath
     }
@@ -62,11 +78,25 @@ internal class PathMatcher {
         }
 
         self.path = path
-
         components = url.pathComponents
+        prefixPattern = PathPattern(components: [])
+    }
+    
+    private init(path: String, components: [String], prefixPattern: PathPattern) {
+        self.path = path
+        self.components = components
+        self.prefixPattern = prefixPattern
+    }
+    
+    internal func appendingPrefix(pattern: PathPattern) -> PathMatcher {
+        return PathMatcher(path: path,
+                           components: components,
+                           prefixPattern: prefixPattern.appendingPattern(pattern))
     }
     
     internal func match(with pattern: PathPattern) -> PathMatch? {
+        
+        let pattern = prefixPattern.appendingPattern(pattern)
         
         guard pattern.parts.count == components.count else {
             return nil

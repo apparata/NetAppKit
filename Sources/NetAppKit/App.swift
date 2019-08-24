@@ -7,22 +7,25 @@ import NIO
 import NIOHTTP1
 
 public final class App {
-       
-    public let server: AppServer
-    
+           
     public let router: AppRouter
+    
+    private var subapps: [App]
         
-    private let loopGroup: MultiThreadedEventLoopGroup
-
     // MARK: - Life cycle
     
     public init() {
-        loopGroup = MultiThreadedEventLoopGroup(numberOfThreads: System.coreCount)
         router = AppRouter()
-        server = AppServer(loopGroup: loopGroup, router: router)
+        subapps = []
     }
     
-    deinit {
-        try! loopGroup.syncShutdownGracefully()
+    public func handle(_ method: HTTPMethod?, path: String?, action: @escaping RouteAction) {
+        router.handle(method, path: path, action: action)
     }
+
+    public func installSubapp(_ app: App, path: String) {
+        subapps.append(app)
+        router.installSubrouter(app.router, path: path)
+    }
+    
 }

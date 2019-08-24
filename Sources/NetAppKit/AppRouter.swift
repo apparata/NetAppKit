@@ -6,13 +6,14 @@ import Foundation
 import NIO
 import NIOHTTP1
 
-/// The next action is called by the handler to allow other actions to
-/// also handle this request.
-public typealias NextAction = () -> Void
+public enum RouterResult {
+    case `handled`
+    case `notHandled`
+}
 
-public typealias RouteAction = (HTTPRequest, HTTPResponse, NextAction) -> Void
+public typealias RouteAction = (HTTPRequest, HTTPResponse) -> RouterResult
 
-private typealias RouteActionWrapper = (HTTPRequest, HTTPResponse, NextAction, PathMatcher) -> Void
+private typealias RouteActionWrapper = (HTTPRequest, HTTPResponse, PathMatcher) -> RouterResult
 
 public class AppRouter {
     
@@ -40,11 +41,10 @@ public class AppRouter {
             }
         }
 
-        handlers.append { (request, response, next, pathMatcher) in
+        handlers.append { request, response, pathMatcher in
 
             if let method = method, method != request.method {
-                next()
-                return
+                return .notHandled
             }
 
             var parameters: [String: String] = [:]
@@ -53,12 +53,27 @@ public class AppRouter {
                 if let match = pathMatcher.match(with: pattern) {
                     parameters = match.parameters
                 } else {
-                    next()
-                    return
+                    return .notHandled
                 }
             }
 
-            action(request.withParameters(parameters), response, next)
+            return action(request.withParameters(parameters), response)
+        }
+    }
+    
+    public func installSubrouter(_ router: AppRouter, path: String) {
+        
+        do {
+            let pattern = try PathMatcher.makePattern(from: path)
+
+            handlers.append { request, response, pathMatcher in
+                return router.route(request: request,
+                                    response: response,
+                                    matcher: pathMatcher.appendingPrefix(pattern: pattern))
+            }
+
+        } catch {
+            log(error: error)
         }
     }
     
@@ -70,24 +85,28 @@ public class AppRouter {
             response.send("Resource not found.", status: 404)
             return
         }
-
-        route(request: request, response: response, index: 0)
-    }
-    
-    private func route(request: HTTPRequest, response: HTTPResponse, index: Int) {
-        
-        guard index < handlers.count else {
-            response.send("Resource not found.", status: 404)
-            return
-        }
         
         guard let matcher = try? PathMatcher(path: request.uri) else {
             response.send("Bad request.", status: 400)
             return
         }
+
+        let result = route(request: request, response: response, matcher: matcher)
         
-        handlers[index](request, response, {
-            self.route(request: request, response: response, index: index + 1)
-        }, matcher)
+        if result == .notHandled {
+            response.send("Resource not found.", status: 404)
+        }
+    }
+    
+    private func route(request: HTTPRequest, response: HTTPResponse, matcher: PathMatcher) -> RouterResult {
+        
+        for handler in handlers {
+            let result = handler(request, response, matcher)
+            if result == .handled {
+                return .handled
+            }
+        }
+        
+        return .notHandled
     }
 }

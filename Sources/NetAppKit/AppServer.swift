@@ -17,9 +17,14 @@ public class AppServer {
     
     private weak var router: AppRouter?
     
-    internal init(loopGroup: MultiThreadedEventLoopGroup, router: AppRouter) {
-        self.loopGroup = loopGroup
-        self.router = router
+    public init(app: App,
+                threadCount: Int = System.coreCount) {
+        loopGroup = MultiThreadedEventLoopGroup(numberOfThreads: threadCount)
+        router = app.router
+    }
+    
+    deinit {
+        try? loopGroup.syncShutdownGracefully()
     }
     
     public func listen(on port: Int = 4000,
