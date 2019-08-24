@@ -10,7 +10,7 @@ NetAppKit is released under the MIT license. See `LICENSE` file for more detaile
 
 ## Reference Documentation
 
-There is generated [reference documentation](https://apparata.github.io/CLIKit/CLIKit/)
+There is generated [reference documentation](https://apparata.github.io/NetAppKit/NetAppKit/)
 available.
 
 ## Example
