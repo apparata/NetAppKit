@@ -22,10 +22,28 @@ public final class HTTPResponse {
         self.channel = channel
     }
     
+    public func sendJSON<T: Encodable>(_ encodable: T,
+                                       status: Int = 200,
+                                       headers: [(String, String)] = [],
+                                       contentType: MIMEContentType? = .json) {
+        let data = (try? JSONEncoder().encode(encodable)) ?? Data()
+        send(data, status: status, headers: headers, contentType: contentType)
+    }
+    
     public func send(_ string: String,
                      status: Int = 200,
                      headers: [(String, String)] = [],
                      contentType: MIMEContentType? = .text) {
+        send(string.data(using: .utf8) ?? Data(),
+             status: status,
+             headers: headers,
+             contentType: contentType)
+    }
+    
+    public func send(_ data: Data,
+                     status: Int = 200,
+                     headers: [(String, String)] = [],
+                     contentType: MIMEContentType?) {
         
         guard let channel = channel else {
             return
@@ -35,9 +53,8 @@ public final class HTTPResponse {
             return
         }
 
-        let stringAsUTF8 = string.utf8
-        var bodyBuffer = channel.allocator.buffer(capacity: stringAsUTF8.count)
-        bodyBuffer.writeBytes(stringAsUTF8)
+        var bodyBuffer = channel.allocator.buffer(capacity: data.count)
+        bodyBuffer.writeBytes(data)
 
         var httpHeaders = HTTPHeaders(headers)
         if let contentType = contentType {
@@ -59,7 +76,7 @@ public final class HTTPResponse {
                 self.finishResponse()
             }
     }
-    
+        
     private func sendHead(status: Int, headers: HTTPHeaders) {
         guard let channel = channel else {
             return
