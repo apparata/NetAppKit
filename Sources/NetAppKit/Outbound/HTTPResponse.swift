@@ -43,9 +43,9 @@ public final class HTTPResponse {
         if let contentType = contentType {
             httpHeaders.replaceOrAdd(name: "Content-Type", value: contentType.asString)
         }
-        httpHeaders.replaceOrAdd(name: "Content-Length", value: String(bodyBuffer.capacity))
+        httpHeaders.replaceOrAdd(name: "Content-Length", value: String(bodyBuffer.readableBytes))
 
-        sendHead(status: status, headers: HTTPHeaders(headers))
+        sendHead(status: status, headers: httpHeaders)
 
         let body = HTTPServerResponsePart.body(.byteBuffer(bodyBuffer))
         
