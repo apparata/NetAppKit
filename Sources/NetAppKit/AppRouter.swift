@@ -56,6 +56,14 @@ public class AppRouter {
                     return .notHandled
                 }
             }
+            
+            if let components = URLComponents(string: request.uri) {
+                for queryItem in components.queryItems ?? [] {
+                    if let value = queryItem.value {
+                        parameters[queryItem.name] = value
+                    }
+                }
+            }
 
             return action(request.withParameters(parameters), response)
         }

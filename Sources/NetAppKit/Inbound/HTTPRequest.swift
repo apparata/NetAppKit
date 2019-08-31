@@ -41,7 +41,7 @@ public final class HTTPRequest {
                            parameters: parameters)
     }
     
-    public func parameter(_ name: String) -> String {
-        return parameters[name] ?? ""
+    public func parameter(_ name: String) -> String? {
+        return parameters[name]
     }
 }
