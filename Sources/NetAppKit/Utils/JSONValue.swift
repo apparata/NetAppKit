@@ -92,7 +92,11 @@ public enum JSONValue {
         set {
             if case .object(let object) = self {
                 var modifiedObject = object
-                modifiedObject[member] = newValue
+                if let value = newValue {
+                    modifiedObject[member] = value
+                } else {
+                    modifiedObject.removeValue(forKey: member)
+                }
                 self = .object(modifiedObject)
             }
         }
