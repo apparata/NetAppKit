@@ -22,6 +22,14 @@ public final class HTTPResponse {
         self.channel = channel
     }
     
+    public func sendJSON(_ json: JSONValue,
+                         status: Int = 200,
+                         headers: [(String, String)] = [],
+                         contentType: MIMEContentType? = .json) {
+        let data = (try? JSONEncoder().encode(json)) ?? Data()
+        send(data, status: status, headers: headers, contentType: contentType)
+    }
+    
     public func sendJSON<T: Encodable>(_ encodable: T,
                                        status: Int = 200,
                                        headers: [(String, String)] = [],
