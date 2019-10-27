@@ -91,17 +91,6 @@ public class AppRouter {
 
         let response = HTTPResponse(channel: channel)
         
-        if let validateAPIKey = validateAPIKey {
-            guard let apiKey = request.headers["API-Key"].first else {
-                response.send("API key missing.", status: 401)
-                return
-            }
-            guard validateAPIKey(apiKey) else {
-                response.send("Unauthorized API key.", status: 401)
-                return
-            }
-        }
-
         guard URL(string: request.uri)?.standardized != nil else {
             response.send("Resource not found.", status: 404)
             return
@@ -120,6 +109,17 @@ public class AppRouter {
     }
     
     private func route(request: HTTPRequest, response: HTTPResponse, matcher: PathMatcher) -> RouterResult {
+        
+        if let validateAPIKey = validateAPIKey {
+            guard let apiKey = request.headers["API-Key"].first else {
+                response.send("API key missing.", status: 401)
+                return .handled
+            }
+            guard validateAPIKey(apiKey) else {
+                response.send("Unauthorized API key.", status: 401)
+                return .handled
+            }
+        }
         
         for handler in handlers {
             let result = handler(request, response, matcher)

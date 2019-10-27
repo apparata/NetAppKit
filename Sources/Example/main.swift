@@ -38,6 +38,10 @@ app.handle(.GET, path: "/parameters/:arg0?arg1=banana") { request, response in
 // Subapp that is installed on /date, so /today endpoint will be /date/today
 let subapp = App()
 
+subapp.validateAPIKey = { apiKey in
+    apiKey == "1234"
+}
+
 subapp.handle(.GET, path: "/today") { request, response in
     response.send("Today's date is \(Date())")
     return .handled
