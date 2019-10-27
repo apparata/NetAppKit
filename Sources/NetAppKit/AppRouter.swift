@@ -19,6 +19,8 @@ public class AppRouter {
     
     private var handlers: [RouteActionWrapper] = []
     
+    public var validateAPIKey: ((_ apiKey: String) -> Bool)?
+    
     internal init() {
         //
     }
@@ -88,6 +90,17 @@ public class AppRouter {
     internal func routeRequest(_ request: HTTPRequest, on channel: Channel) {
 
         let response = HTTPResponse(channel: channel)
+        
+        if let validateAPIKey = validateAPIKey {
+            guard let apiKey = request.headers["API-Key"].first else {
+                response.send("API key missing.", status: 401)
+                return
+            }
+            guard validateAPIKey(apiKey) else {
+                response.send("Unauthorized API key.", status: 401)
+                return
+            }
+        }
 
         guard URL(string: request.uri)?.standardized != nil else {
             response.send("Resource not found.", status: 404)

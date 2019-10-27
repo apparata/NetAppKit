@@ -10,6 +10,11 @@ public final class App {
            
     public let router: AppRouter
     
+    public var validateAPIKey: ((_ apiKey: String) -> Bool)? {
+        get { router.validateAPIKey }
+        set { router.validateAPIKey = newValue }
+    }
+    
     private var subapps: [App]
         
     // MARK: - Life cycle
