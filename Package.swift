@@ -1,4 +1,4 @@
-// swift-tools-version:5.1
+// swift-tools-version:5.3
 
 import PackageDescription
 
@@ -11,14 +11,14 @@ let package = Package(
         .library(name: "NetAppKit", targets: ["NetAppKit"]),
     ],
     dependencies: [
-        .package(url: "https://github.com/apple/swift-nio.git", from: "2.7.0"),
+        .package(url: "https://github.com/apple/swift-nio.git", from: "2.27.0"),
     ],
     targets: [
         .target(
             name: "NetAppKit",
             dependencies: [
-                "NIO",
-                "NIOHTTP1"
+                .product(name: "NIO", package: "swift-nio"),
+                .product(name: "NIOHTTP1", package: "swift-nio")
             ],
             swiftSettings: [
                 .define("DEBUG", .when(configuration: .debug)),
