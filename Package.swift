@@ -1,4 +1,4 @@
-// swift-tools-version:5.3
+// swift-tools-version:5.4
 
 import PackageDescription
 
@@ -11,7 +11,7 @@ let package = Package(
         .library(name: "NetAppKit", targets: ["NetAppKit"]),
     ],
     dependencies: [
-        .package(url: "https://github.com/apple/swift-nio.git", from: "2.27.0"),
+        .package(url: "https://github.com/apple/swift-nio.git", from: "2.30.0"),
     ],
     targets: [
         .target(
@@ -25,7 +25,7 @@ let package = Package(
                 .define("RELEASE", .when(configuration: .release)),
                 .define("SWIFT_PACKAGE")
             ]),
-        .target(
+        .executableTarget(
             name: "Example",
             dependencies: [
                 "NetAppKit"
