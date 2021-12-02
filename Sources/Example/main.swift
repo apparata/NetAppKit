@@ -7,14 +7,30 @@ import NetAppKit
 
 let app = App()
 
+func someKindOfAsyncFunction() async {
+    // We could do async work in here.
+}
+
 app.handle(.GET, path: "/helloworld") { request, response in
-    response.send("This is a test.")
+    struct Message: Codable {
+        let text: String
+    }
+    await someKindOfAsyncFunction()
+    response.sendJSON(Message(text: "Hello, World!"))
     return .handled
 }
 
 app.handle(.GET, path: "/echo/:word") { request, response in
+    await someKindOfAsyncFunction()
     response.send("Echoed word: \(request.parameter("word") ?? "N/A")")
     return .handled
+}
+
+do {
+    let server = AppServer(app: app)
+    try server.listen(on: 4000)
+} catch {
+    dump(error)
 }
 
 app.handle(.GET, path: "/json/please") { request, response in

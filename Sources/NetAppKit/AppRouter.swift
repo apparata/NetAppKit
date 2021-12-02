@@ -11,9 +11,9 @@ public enum RouterResult {
     case `notHandled`
 }
 
-public typealias RouteAction = (HTTPRequest, HTTPResponse) -> RouterResult
+public typealias RouteAction = (HTTPRequest, HTTPResponse) async -> RouterResult
 
-private typealias RouteActionWrapper = (HTTPRequest, HTTPResponse, PathMatcher) -> RouterResult
+private typealias RouteActionWrapper = (HTTPRequest, HTTPResponse, PathMatcher) async -> RouterResult
 
 public class AppRouter {
     
@@ -67,7 +67,7 @@ public class AppRouter {
                 }
             }
 
-            return action(request.withParameters(parameters), response)
+            return await action(request.withParameters(parameters), response)
         }
     }
     
@@ -77,9 +77,9 @@ public class AppRouter {
             let pattern = try PathMatcher.makePattern(from: path)
 
             handlers.append { request, response, pathMatcher in
-                return router.route(request: request,
-                                    response: response,
-                                    matcher: pathMatcher.appendingPrefix(pattern: pattern))
+                return await router.route(request: request,
+                                          response: response,
+                                          matcher: pathMatcher.appendingPrefix(pattern: pattern))
             }
 
         } catch {
@@ -87,7 +87,7 @@ public class AppRouter {
         }
     }
     
-    internal func routeRequest(_ request: HTTPRequest, on channel: Channel) {
+    internal func routeRequest(_ request: HTTPRequest, on channel: Channel) async {
 
         let response = HTTPResponse(channel: channel)
         
@@ -101,14 +101,14 @@ public class AppRouter {
             return
         }
 
-        let result = route(request: request, response: response, matcher: matcher)
+        let result = await route(request: request, response: response, matcher: matcher)
         
         if result == .notHandled {
             response.send("Resource not found.", status: 404)
         }
     }
     
-    private func route(request: HTTPRequest, response: HTTPResponse, matcher: PathMatcher) -> RouterResult {
+    private func route(request: HTTPRequest, response: HTTPResponse, matcher: PathMatcher) async -> RouterResult {
         
         if let validateAPIKey = validateAPIKey {
             guard let apiKey = request.headers["API-Key"].first else {
@@ -122,7 +122,7 @@ public class AppRouter {
         }
         
         for handler in handlers {
-            let result = handler(request, response, matcher)
+            let result = await handler(request, response, matcher)
             if result == .handled {
                 return .handled
             }

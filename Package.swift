@@ -1,17 +1,17 @@
-// swift-tools-version:5.4
+// swift-tools-version:5.5
 
 import PackageDescription
 
 let package = Package(
     name: "NetAppKit",
     platforms: [
-        .macOS(.v10_14)
+        .macOS(.v12)
     ],
     products: [
         .library(name: "NetAppKit", targets: ["NetAppKit"]),
     ],
     dependencies: [
-        .package(url: "https://github.com/apple/swift-nio.git", from: "2.30.0"),
+        .package(url: "https://github.com/apple/swift-nio.git", .exact("2.35.0")),
     ],
     targets: [
         .target(

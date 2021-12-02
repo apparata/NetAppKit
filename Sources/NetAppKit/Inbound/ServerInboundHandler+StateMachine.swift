@@ -9,13 +9,13 @@ import NIOHTTP1
 internal enum InboundState {
     case waitingForRequest
     case waitingForEndOfRequest(head: HTTPRequestHead, body: DispatchData)
-    case processingRequest(HTTPRequest)
+    case processingRequest(HTTPRequest, ChannelHandlerContext)
 }
 
 internal enum InboundEvent {
     case receivedHead(HTTPRequestHead)
     case receivedBodyChunk(DispatchData)
-    case receivedEnd
+    case receivedEnd(ChannelHandlerContext)
     case processedRequest
 }
 
@@ -35,9 +35,9 @@ extension ServerInboundHandler: StateMachineDelegate {
             body.append(chunk)
             return .waitingForEndOfRequest(head: head, body: body)
             
-        case (.waitingForEndOfRequest(let head, let body), .receivedEnd):
+        case (.waitingForEndOfRequest(let head, let body), .receivedEnd(let context)):
             let request = HTTPRequest(head: head, body: body)
-            return .processingRequest(request)
+            return .processingRequest(request, context)
             
         case (.processingRequest, .processedRequest):
             return .waitingForRequest
@@ -54,12 +54,14 @@ extension ServerInboundHandler: StateMachineDelegate {
     internal func didTransition(from state: InboundState, to newState: InboundState, dueTo event: InboundEvent) {
         
         switch (state, event, newState) {
-        case (_, _, .processingRequest(let request)):
+        case (_, _, .processingRequest(let request, let context)):
             guard let channel = channel else {
                 return
             }
-            router?.routeRequest(request, on: channel)
-            
+            let promise = context.eventLoop.makePromise(of: Void.self)
+            promise.completeWithTask { [weak self] in
+                await self?.router?.routeRequest(request, on: channel)
+            }
         default:
             break
         }

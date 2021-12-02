@@ -34,7 +34,7 @@ internal final class ServerInboundHandler: ChannelInboundHandler {
             }
         
         case .end:
-            stateMachine.fireEvent(.receivedEnd)
+            stateMachine.fireEvent(.receivedEnd(context))
         }
     }
     
