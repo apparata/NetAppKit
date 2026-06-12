@@ -11,7 +11,7 @@ let package = Package(
         .library(name: "NetAppKit", targets: ["NetAppKit"]),
     ],
     dependencies: [
-        .package(url: "https://github.com/apple/swift-nio.git", .exact("2.35.0")),
+        .package(url: "https://github.com/apple/swift-nio.git", .exact("2.100.0")),
     ],
     targets: [
         .target(
